@@ -6,8 +6,8 @@
 % FLUID PARAMETER VALUES %
 %
 Fluid_Parameters {
-mu = 0.01               % Dynamic Viscosity (N*s/m^2) 
-rho = 1                 % Density (kg/m^2)
+mu = 0.00001813             % Dynamic Viscosity (N*s/m^2) 
+rho = 1.204                 % Density (kg/m^2)
 }
 
 
@@ -15,8 +15,8 @@ rho = 1                 % Density (kg/m^2)
 % TEMPORAL INFORMATION %
 %
 Temporal_Information {
-Tfinal = 0.9           % Final time of simulation (s)
-dt = 2.5e-5             % Time-step (s)
+Tfinal = 0.75           % Final time of simulation (s)
+dt = 1e-5             % Time-step (s)
 }
 
 
@@ -24,10 +24,10 @@ dt = 2.5e-5             % Time-step (s)
 % GRID PARAMETERS %
 %
 Grid_Parameters {
-Nx = 128               % # of Eulerian Grid Pts. in x-Direction (MUST BE EVEN!!!)
-Ny = 128               % # of Eulerian Grid Pts. in y-Direction (MUST BE EVEN!!!)
-Lx = 1.0                % Length of Eulerian Grid in x-Direction (m)
-Ly = 1.0                % Length of Eulerian Grid in y-Direction (m)
+Nx = 128                % # of Eulerian Grid Pts. in x-Direction (MUST BE EVEN!!!)
+Ny = 128                % # of Eulerian Grid Pts. in y-Direction (MUST BE EVEN!!!)
+Lx = 0.2                % Length of Eulerian Grid in x-Direction (m)
+Ly = 0.2                % Length of Eulerian Grid in y-Direction (m)
 supp = 4                % Choose dirac-delta support (KEEP IT EVEN!!!)
 }
 
@@ -36,7 +36,7 @@ supp = 4                % Choose dirac-delta support (KEEP IT EVEN!!!)
 % LAGRANGIAN STRUCTURE MODEL INFORMATION %
 %
 Lag_Structure_Info {
-springs = 1             % 0 (for no) or 1 (for yes)
+springs = 0             % 0 (for no) or 1 (for yes)
 update_springs = 0      % 0 (for no) or 1 (for yes)
 target_pts = 1          % 0 (for no) or 1 (for yes)
 update_target = 0       % 0 (for no) or 1 (for yes)

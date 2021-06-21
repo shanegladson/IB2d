@@ -1,21 +1,17 @@
 '''-------------------------------------------------------------------------
-
  IB2d is an Immersed Boundary Code (IB) for solving fully coupled non-linear 
- 	fluid-structure interaction models. This version of the code is based off of
-	Peskin's Immersed Boundary Method Paper in Acta Numerica, 2002.
-
+    fluid-structure interaction models. This version of the code is based off of
+    Peskin's Immersed Boundary Method Paper in Acta Numerica, 2002.
  Author: Nicholas A. Battista
  Email:  nick.battista@unc.edu
  Date Created: May 27th, 2015\
  Python 3.5 port by: Christopher Strickland
  Institution: UNC-CH
-
  This code is capable of creating Lagrangian Structures using:
- 	1. Springs
- 	2. Beams (*torsional springs)
- 	3. Target Points
-	4. Muscle-Model (combined Force-Length-Velocity model, "HIll+(Length-Tension)")
-
+    1. Springs
+    2. Beams (*torsional springs)
+    3. Target Points
+    4. Muscle-Model (combined Force-Length-Velocity model, "HIll+(Length-Tension)")
  One is able to update those Lagrangian Structure parameters, e.g., 
  spring constants, resting lengths, etc
  
@@ -24,13 +20,6 @@
  If you would like us to add a specific muscle model, 
  please let Nick (nick.battista@unc.edu) know.
  ----------------------------------------------------------------------------'''
- 
-###############################################################################
-#
-# FUNCTION: creates the HEART-TUBE-EXAMPLE geometry 
-#       and prints associated input files
-#
-################################################################################
 
 from math import cos, sin, pi, sqrt
 import numpy as np
@@ -41,19 +30,19 @@ def CylinderGeometry():
     #
     # Grid Parameters (MAKE SURE MATCHES IN input2d !!!)
     #
-    Nx =  128        # # of Eulerian Grid Pts. in x-Direction (MUST BE EVEN!!!)
-    Ny =  128        # # of Eulerian Grid Pts. in y-Direction (MUST BE EVEN!!!)
-    Lx = 1.0        # Length of Eulerian Grid in x-Direction
-    Ly = 1.0        # Length of Eulerian Grid in y-Direction
+    Nx = 128        # # of Eulerian Grid Pts. in x-Direction (MUST BE EVEN!!!)
+    Ny = 128        # # of Eulerian Grid Pts. in y-Direction (MUST BE EVEN!!!)
+    Lx = 0.2        # Length of Eulerian Grid in x-Direction
+    Ly = 0.2        # Length of Eulerian Grid in y-Direction
 
 
     # Immersed Structure Geometric / Dynamic Parameters #
     ds = min(Lx/(2*Nx), Ly/(2*Ny))  # Lagrangian Spacing
-    L = 0.9*Lx # Length of channel
-    w = 0.2*Ly # Width of channel
-    x0 = 0.3 # x-center for cylinder
-    y0 = 0.5 # y-center for cylinder
-    r = w/6 # radii for cylinder
+    L = Lx # Length of channel
+    w = Ly # Width of channel
+    x0 = 0.05 # x-center for cylinder
+    y0 = Ly/2.0 # y-center for cylinder
+    r = 0.02 # radii for cylinder
     struct_name = 'viv_geo' # Name for .vertex, .spring, etc files.
 
 
@@ -93,7 +82,7 @@ def CylinderGeometry():
 
     # Prints .target file!
     k_Target = 2.5e7
-    print_Lagrangian_Target_Pts(xLag,k_Target,struct_name)
+    print_Lagrangian_Target_Pts(np.concatenate((xLag, xLag_Cy)),k_Target,struct_name)
 
 ########################################################################
 #

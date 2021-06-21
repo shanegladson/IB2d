@@ -1,8 +1,9 @@
+
 #-------------------------------------------------------------------------------------------------------------------#
 #
 # IB2d is an Immersed Boundary Code (IB) for solving fully coupled non-linear 
-# 	fluid-structure interaction models. This version of the code is based off of
-#	Peskin's Immersed Boundary Method Paper in Acta Numerica, 2002.
+#   fluid-structure interaction models. This version of the code is based off of
+#   Peskin's Immersed Boundary Method Paper in Acta Numerica, 2002.
 #
 # Author: Nicholas A. Battista
 # Email:  nickabattista@gmail.com
@@ -10,12 +11,12 @@
 # Institution: UNC-CH
 #
 # This code is capable of creating Lagrangian Structures using:
-# 	1. Springs
-# 	2. Beams (*torsional springs)
-# 	3. Target Points
-#	4. Muscle-Model (combined Force-Length-Velocity model, "HIll+(Length-Tension)")
+#   1. Springs
+#   2. Beams (*torsional springs)
+#   3. Target Points
+#   4. Muscle-Model (combined Force-Length-Velocity model, "HIll+(Length-Tension)")
 #
-# One is able to update those Lagrangian Structure parameters, e.g., spring constants, resting ##	lengths, etc
+# One is able to update those Lagrangian Structure parameters, e.g., spring constants, resting ##   lengths, etc
 # 
 # There are a number of built in Examples, mostly used for teaching purposes. 
 # 
@@ -62,18 +63,18 @@ def please_Compute_External_Forcing(dt,current_time,x,y, grid_Info, uX, uY, firs
     kStiff = 1e4
 
     # Width of Channel
-    w = 0.2
+    w = Ly
 
     # Max Velocity Desired
-    uMax = 1
+    uMax = 0.12
 
     if first == 1:
 
         # Compute Where You Want to Apply Force
-        xMin = 0.1
-        xMax = 0.16
-        yMin = 0.41
-        yMax = 0.59
+        xMin = 0.01
+        xMax = 0.02
+        yMin = 0.00
+        yMax = Ly
 
         inds = give_Me_Indices_To_Apply_Force(x,y,xMin,xMax,yMin,yMax)
         first = 0
