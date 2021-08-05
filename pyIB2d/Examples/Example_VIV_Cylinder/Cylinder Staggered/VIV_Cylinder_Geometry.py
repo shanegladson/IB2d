@@ -40,15 +40,56 @@ def CylinderGeometry():
     ds = min(Lx/(2*Nx), Ly/(2*Ny))  # Lagrangian Spacing
     L = Lx # Length of channel
     w = Ly # Width of channel
-    x0 = Lx/2.0 # x-center for cylinder
-    y0 = Ly/2.0 # y-center for cylinder
-    r = 0.02 # radii for cylinder
+
+    x0 = Lx/5.0 # x-center for cylinder
+    y0 = Ly/4.0 # y-center for cylinder
+
+    x1 = Lx/5.0
+    y1 = 2*Ly/4.0
+
+    x2 = Lx/5.0 # x-center for cylinder
+    y2 = 3 * Ly/4.0 # y-center for cylinder
+
+    x3 = 2*Lx/5.0
+    y3 = 3*Ly/8.0
+
+    x4 = 2 * Lx / 5.0  # x-center for cylinder
+    y4 =  5*Ly/8.0  # y-center for cylinder
+
+    x5 = 3 * Lx / 5.0
+    y5 = 1 * Ly / 4.0
+
+    x6 = 3 * Lx / 5.0  # x-center for cylinder
+    y6 = 2 * Ly / 4.0  # y-center for cylinder
+
+    x7 = 3 * Lx / 5.0
+    y7 = 3 * Ly / 4.0
+
+    x8 = 4 * Lx / 5.0  # x-center for cylinder
+    y8 = 3*Ly/8.0  # y-center for cylinder
+
+    x9 = 4 * Lx / 5.0
+    y9 = 5*Ly/8.0
+
+    r = 0.005 # radii for cylinder
     struct_name = 'viv_geo' # Name for .vertex, .spring, etc files.
 
 
     # Call function to construct geometry
     xLag,yLag = give_Me_Immsersed_Boundary_Geometry(ds,L,w,Lx,Ly)
-    xLag_Cy, yLag_Cy = give_Me_Cylinder_Immersed_Boundary_Geometry(ds, r, x0, y0)
+    x0Lag_Cy, y0Lag_Cy = give_Me_Cylinder_Immersed_Boundary_Geometry(ds, r, x0, y0)
+    x1Lag_Cy, y1Lag_Cy = give_Me_Cylinder_Immersed_Boundary_Geometry(ds, r, x1, y1)
+    x2Lag_Cy, y2Lag_Cy = give_Me_Cylinder_Immersed_Boundary_Geometry(ds, r, x2, y2)
+    x3Lag_Cy, y3Lag_Cy = give_Me_Cylinder_Immersed_Boundary_Geometry(ds, r, x3, y3)
+    x4Lag_Cy, y4Lag_Cy = give_Me_Cylinder_Immersed_Boundary_Geometry(ds, r, x4, y4)
+    x5Lag_Cy, y5Lag_Cy = give_Me_Cylinder_Immersed_Boundary_Geometry(ds, r, x5, y5)
+    x6Lag_Cy, y6Lag_Cy = give_Me_Cylinder_Immersed_Boundary_Geometry(ds, r, x6, y6)
+    x7Lag_Cy, y7Lag_Cy = give_Me_Cylinder_Immersed_Boundary_Geometry(ds, r, x7, y7)
+    x8Lag_Cy, y8Lag_Cy = give_Me_Cylinder_Immersed_Boundary_Geometry(ds, r, x8, y8)
+    x9Lag_Cy, y9Lag_Cy = give_Me_Cylinder_Immersed_Boundary_Geometry(ds, r, x9, y9)
+
+    xLag_Cy = np.concatenate((x0Lag_Cy, x1Lag_Cy, x2Lag_Cy, x3Lag_Cy, x4Lag_Cy, x5Lag_Cy, x6Lag_Cy, x7Lag_Cy, x8Lag_Cy, x9Lag_Cy))
+    yLag_Cy = np.concatenate((y0Lag_Cy, y1Lag_Cy, y2Lag_Cy, y3Lag_Cy, y4Lag_Cy, y5Lag_Cy, y6Lag_Cy, y7Lag_Cy, y8Lag_Cy, y9Lag_Cy))
 
     xTether = x0
     indsTether, x0_new = give_Me_Tethering_Pt_Indices(xLag, xTether)
@@ -57,11 +98,11 @@ def CylinderGeometry():
     # Plot Geometry to test
     # plt.plot(xLag[:len(xLag)//2],yLag[:len(xLag)//2],'r-')
     # plt.plot(xLag[len(xLag)//2:],yLag[len(xLag)//2:],'r-')
-    # plt.plot(xLag_Cy,yLag_Cy,'r-')
-    # plt.xlabel('x')
-    # plt.ylabel('y')
-    # plt.axis([0, Lx, 0, Ly])
-    # plt.show(block=True)
+    plt.plot(xLag_Cy,yLag_Cy,'r-')
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.axis([0, Lx, 0, Ly])
+    plt.show(block=True)
 
 
     # Prints .vertex file!

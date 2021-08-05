@@ -105,7 +105,7 @@ def print_Lagrangian_Vertices(xLag,yLag,struct_name):
     
 ########################################################################
 #
-# FUNCTION: prints Vertex points to a file called rubberband.vertex
+# FUNCTION: prints target points to a file called rubberband.target
 #
 ########################################################################
 
