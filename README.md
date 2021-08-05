@@ -56,3 +56,12 @@ The basics of visualizing data using open source visualization software called <
 
 <hr> </hr>
 
+<H3> New Examples Added by Shane </H3>
+
+--> Two different new examples have been added that are used in <a href='https://github.com/mountaindust/Planktos'> Planktos </a> to understand the flight dynamics of parasitoid wasps.
+
+--> The first example is of a single cylinder in a square domain. This is meant to be tiled in Planktos to simulate grids of varying dimensions. There is a forcing function that moves fluid in the positive x-direction at whatever desired velocity. This example is written in python and is meant to be related to the Example_VIV_Cylinder file in the MATLAB version.
+
+--> The second example is of a domain with 8 cylinders arranged in a staggered 3-2-3-2 grid that is horizontally symmetrical. There is also a forcing function in this example that allows fluid to move in the positive x-direction throughout the domain. This example is not designed to be tiled however with a few modifications it is possible.
+
+--> Anaconda is recommended for use with IB2d, and the introductory tutorials by Nicholas Battista is a good place to start.
